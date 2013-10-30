@@ -1,0 +1,55 @@
+{
+    "head": {
+        "message": "",
+        "code": "ok"
+    },
+    "body": {
+        "content": [
+            {
+                "postId": "5243e493e4b017bb9d08b3e6",
+                "author": {
+                    "uid": "52270420c1f2468e582afbfb",
+                    "name": "马豪杰",
+                    "avatar": "http://www.baidu.com/img/bdlogo.gif",
+                    "title": "HTML5前端工程师"
+                },
+                "meta":{
+                    "title": "颜域2013秋冬新款 欧美大牌 时尚休闲大翻领单排扣羊毛呢外套大衣",
+                    "content": "1时尚休闲大翻领单排扣羊毛呢外套大衣时尚休闲大翻领单排扣羊毛呢外套大衣时尚休闲大翻领单排扣羊毛呢外套大衣",
+                    "thumb": "http://www.baidu.com/img/bdlogo.gif",
+                    "timestamp": 1380181139432
+                },
+                "app":{
+                     "id":"shopping@hand-rss.com",
+                     "name":"购物推荐"
+                }
+            },            {
+                "postId": "5243e493e4b017bb9d08b3e6",
+                "author": {
+                    "uid": "52270420c1f2468e582afbfb",
+                    "name": "马豪杰",
+                    "avatar": "http://www.baidu.com/img/bdlogo.gif",
+                    "title": "HTML5前端工程师"
+                },
+                "meta":{
+                    "title": "颜域2013秋冬新款 欧美大牌 时尚休闲大翻领单排扣羊毛呢外套大衣",
+                    "content": "1时尚休闲大翻领单排扣羊毛呢外套大衣时尚休闲大翻领单排扣羊毛呢外套大衣时尚休闲大翻领单排扣羊毛呢外套大衣",
+                    "thumb": "http://www.baidu.com/img/bdlogo.gif",
+                    "timestamp": 1380181139432
+                },
+                "app":{
+                     "id":"shopping@hand-rss.com",
+                     "name":"购物推荐"
+                }
+            }
+        ],
+        "sort": null,
+        "numberOfElements": 2,
+        "totalElements": 0,
+        "firstPage": true,
+        "lastPage": true,
+        "totalPages": 0,
+        "size": 210,
+        "number": 0
+    }
+}

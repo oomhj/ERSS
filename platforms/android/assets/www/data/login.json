@@ -1,0 +1,19 @@
+{
+    "body": {
+        "email": "frank.fan@hand-china.com",
+        "user": {
+            "id": "52661f1d519af85677f7edda",
+            "name": "frank.fan",
+            "email": "frank.fan@hand-china.com",
+            "avatar": "xxx.png",
+            "age": 24,
+            "title": "Java developer"
+        },
+        "token": "f7f5b30cab81e0f52be609b5754e7491",
+        "deviceType": "iphone"
+    },
+    "head": {
+        "message": "",
+        "code": "ok"
+    }
+}
