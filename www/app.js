@@ -44,8 +44,10 @@ Ext.application({
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
     },
-    showLoginView: function() {  
-        Ext.Viewport.removeAll(false, true);
-        Ext.Viewport.add({xtype: "LoginView"});
+    showLoginView: function() {
+        Ext.Viewport.getAt(0).hide(true);
+        Ext.Viewport.removeAt(1);
+        Ext.Viewport.getAt(0).show(true);
+//        Ext.Viewport.add({xtype: "LoginView"});
     }
 });

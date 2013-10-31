@@ -6,18 +6,6 @@ Ext.define('HERSS.store.ShoppingListStore', {
     config: {
         model: "HERSS.model.TimeLineListModel",
         pageSize: 15,
-        autoLoad: true,
-        proxy: {
-            type: 'ajax',
-            useDefaultXhrHeader: false,
-            limitParam: 'page.size', //设置limit参数，默认为limit
-            pageParam: 'page.page', //设置page参数，默认为page
-            extraParams: {'token': HERSS.UserModel.get('token')},
-            url: HERSS.app.serverURL + 'timeline/app/shopping',
-            reader: {
-                type: 'json',
-                rootProperty: 'body.content'
-            }
-        }
+        autoLoad: true
     }
 });
