@@ -5,7 +5,6 @@ Ext.define('HERSS.store.ShoppingListStore', {
     ],
     config: {
         model: "HERSS.model.TimeLineListModel",
-        pageSize: 15,
-        autoLoad: true
+        pageSize: 15
     }
 });

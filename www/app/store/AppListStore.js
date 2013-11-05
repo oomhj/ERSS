@@ -5,7 +5,6 @@ Ext.define('HERSS.store.AppListStore', {
     ],
     config: {
         model: 'HERSS.model.AppModel',
-        autoLoad: true,
         grouper: {
             sortProperty: 'appId',
             groupFn: function(record) {
