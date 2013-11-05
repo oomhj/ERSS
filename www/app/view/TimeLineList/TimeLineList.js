@@ -8,13 +8,18 @@ Ext.define('HERSS.view.TimeLineList.TimeLineList', {
     xtype: 'TimeLineList',
     config: {
         title: '消息',
-        iconCls: 'time',
+        iconCls: 'home',
         cls: 'black',
         infinite: true,
         autoDestroy: false,
         variableHeights: true,
         disableSelection: true,
         scrollToTopOnRefresh: false,
+        items: {
+            docked: 'top',
+            xtype: 'toolbar',
+            title: '消息'
+        },
         plugins: [
             {
                 xclass: 'Ext.plugin.ListPaging',

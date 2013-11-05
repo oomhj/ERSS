@@ -11,8 +11,8 @@ Ext.define('HERSS.view.Main', {
         tabBar: {
         },
         items: [
-            {xclass: 'HERSS.view.TimeLineList.TimeLineNavigator'},
-            {xclass: 'HERSS.view.TimeLineList.ShoppingNavigator'},
+            {xclass: 'HERSS.view.TimeLineList.TimeLineList'},
+            {xclass: 'HERSS.view.TimeLineList.ShoppingList'},
             {xclass: 'HERSS.view.AppList'}
         ]
     }

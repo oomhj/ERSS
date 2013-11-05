@@ -5,51 +5,51 @@ Ext.define('HERSS.controller.TimeLineController', {
         stores: ['HERSS.store.BlogContentStore'],
         refs: {
             MainView: "Main",
-            TimeLineNavigator: 'Main TimeLineNavigator',
-            ShoppingNavigator: 'Main ShoppingNavigator',
-            TimeLineList: 'TimeLineNavigator TimeLineList',
-            ShoppingList: 'ShoppingNavigator ShoppingList',
-            AppList: 'Main AppList'
+            TimeLineList: 'Main TimeLineList',
+            ShoppingList: 'Main ShoppingList',
+            AppList: 'Main AppList',
+            BlogContentView: 'BlogContentView',
+            BackButton: 'BlogContentView button[name=back]'
         },
         control: {
-            TimeLineNavigator: {
-                beforepop: 'onTimeLineListCardBeforePop'
-            },
             TimeLineList: {
-                itemtap: 'onTimeLineItemTap'
+                itemtap: 'onItemTap'
             },
             ShoppingList: {
-                itemtap: 'onShoppingItemTap'
+                itemtap: 'onItemTap'
+            },
+            BackButton: {
+                tap: 'onBackButtonTap'
             }
         },
         Login: true
     },
-    onTimeLineItemTap: function(list, idx, el, record) {
-        this.createBlogContentView();
-        this._BlogContentView.config.title = record.data.post.title;
-        this.getTimeLineNavigator().push(this._BlogContentView);
-        this.showContentView(record);
+    onBackButtonTap: function() {
+        this.getMainView().show();
+        this.getBlogContentView().hide();
+        this.getMainView().setZIndex(0);
     },
-    onShoppingItemTap: function(list, idx, el, record) {
+    onItemTap: function(list, idx, el, record) {
         this.createBlogContentView();
-        this._BlogContentView.config.title = record.data.post.title;
-        this.getShoppingNavigator().push(this._BlogContentView);
+//        this.getBlogContentView.config.title = record.data.post.title;
         this.showContentView(record);
     },
     createBlogContentView: function() {
-        if (!this._BlogContentView) {
-            this._BlogContentView = Ext.create('HERSS.view.BlogContentView');
-            console.log('createBlogContentView');
+        if (!this.getBlogContentView()) {
+            Ext.Viewport.add(Ext.create('HERSS.view.BlogContentView'));
+            console.log('create-BlogContentView');
         }
     },
     showContentView: function(record) {
         var TC = this;
         var id = record.data.postId;
-        var _BlogContentView = TC._BlogContentView;
+        var _BlogContentView = TC.getBlogContentView();
         _BlogContentView.setMasked({
             xtype: 'loadmask',
             message: '载入中...'
         });
+        _BlogContentView.show();
+        this.getMainView().setZIndex(-1);
         var onSuccess = function(response, opts) {
             var obj = Ext.decode(response.responseText);
             var status = obj.head.code;
@@ -61,8 +61,10 @@ Ext.define('HERSS.controller.TimeLineController', {
             } else {
                 _BlogContentView.unmask();
                 Ext.Msg.alert('请求失败', obj.head.message, function() {
+                    TC.onBackButtonTap();
                     var LC = HERSS.app.getController('LoginController');
-                    Ext.Viewport.getAt(1).hide(true);
+                    Ext.Viewport.getAt(1).hide(false);
+                    Ext.Viewport.getAt(1).setZIndex(-1);
                     LC.launch();
                 });
             }
@@ -137,13 +139,12 @@ Ext.define('HERSS.controller.TimeLineController', {
             Ext.Viewport.add(Ext.create('HERSS.view.Main'));
             this.initData();
         } else {
-            this.getShoppingNavigator().pop(1);
-            this.getTimeLineNavigator().pop(1);
             this.updateToken();
             console.log('update-Token');
             this.loadStore();
             console.log('load-Store');
             Ext.Viewport.getAt(1).show(true);
+            Ext.Viewport.getAt(1).setZIndex(0);
         }
 
     }
