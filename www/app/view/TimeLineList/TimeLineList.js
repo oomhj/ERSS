@@ -45,7 +45,7 @@ Ext.define('HERSS.view.TimeLineList.TimeLineList', {
         itemTpl: [
             '<article>',
             '<header>',
-            '<a class="avatar" href="/u/{author.uid}"><img src="{author.avatar}" alt="" width="35" height="35" class="J-lazyPic"/></a>',
+            '<div class="avatar"><img src="{author.avatar}" alt="" width="35" height="35"/></div>',
             '<span class = "FCLev6 nikename"> {author.name} </span>',
             '<span class="pubtime FCLev5">{author.title}</span>',
             '<span class = "origin FCLev5" > <time class="pubtime FCLev5">{post.timestamp}</time>来自{app.desc}</span>',
@@ -53,7 +53,7 @@ Ext.define('HERSS.view.TimeLineList.TimeLineList', {
             '<section class="content">',
             '<p>{post.title}</p>',
             '<p>{post.summary}</p>',
-            '<img src="{post.thumbnail}">',
+            '<img src="{post.thumbnail}" width="300">',
             '</section>',
             '</article>'
         ],

@@ -53,22 +53,13 @@ Ext.define('HERSS.controller.LoginController', {
     updateUserInfo: function(userInfo) {
         if (HERSS.UserModel === undefined) {
             HERSS.UserModel = Ext.create('HERSS.model.UserModel', userInfo);
-            console.log('UserModel 創建了');
-            console.log('token:' + HERSS.UserModel.get('token'));
         } else {
-            if (userInfo.email === HERSS.UserModel.get('email')) {
-                console.log('同一用户');
-                HERSS.UserModel.set('token', userInfo.token);
-                console.log('token:' + HERSS.UserModel.get('token'));
-            } else {
-                console.log('不同用户');
-            }
+            HERSS.UserModel.setData(userInfo);
         }
 
     },
     creatMain: function() {
         Ext.create('HERSS.view.Main');
-        console.log('Main 創建了');
         var token = HERSS.UserModel.get('token');
         var proxy = Ext.create('Ext.data.proxy.Ajax', {
             useDefaultXhrHeader: false,
@@ -86,7 +77,7 @@ Ext.define('HERSS.controller.LoginController', {
             useDefaultXhrHeader: false,
             limitParam: 'page.size', //设置limit参数，默认为limit
             pageParam: 'page.page', //设置page参数，默认为page
-            extraParams: {'token':token },
+            extraParams: {'token': token},
             url: HERSS.app.serverURL + 'timeline/app/shopping',
             reader: {
                 type: 'json',
@@ -97,16 +88,15 @@ Ext.define('HERSS.controller.LoginController', {
         proxy = Ext.create('Ext.data.proxy.Ajax', {
             type: 'ajax',
             useDefaultXhrHeader: false,
-            extraParams: {'token':token},
+            extraParams: {'token': token},
             url: HERSS.app.serverURL + 'app/detailInEachApp/',
             reader: {
                 type: 'json',
                 rootProperty: 'body'
             }
         });
-
         this.getAppList().getStore().setProxy(proxy);
-        console.log('proxy 創建了');
+
         this.getTimeLineList().getStore().load();
         this.getShoppingList().getStore().load();
         this.getAppList().getStore().load();

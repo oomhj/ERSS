@@ -1,7 +1,7 @@
 Ext.define('HERSS.view.AppList', {
     extend: 'Ext.List',
     xtype: 'AppList',
-//    requires:['HERSS.store.TimeLineListStore'],
+    requires:['HERSS.store.AppListStore'],
     config: {
         items: [
             {

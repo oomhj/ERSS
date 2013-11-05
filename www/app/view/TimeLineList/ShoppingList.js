@@ -2,7 +2,8 @@ Ext.define('HERSS.view.TimeLineList.ShoppingList', {
     extend: 'Ext.List',
     requires: [
         'Ext.plugin.PullRefresh',
-        'Ext.plugin.ListPaging'
+        'Ext.plugin.ListPaging',
+        'HERSS.store.ShoppingListStore'
     ],
     xtype: 'ShoppingList',
     config: {
