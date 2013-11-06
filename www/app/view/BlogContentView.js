@@ -5,7 +5,7 @@ Ext.define('HERSS.view.BlogContentView', {
     config: {
         cls: 'messageInfo',
         store: {xclass: 'HERSS.store.BlogContentStore'},
-        itemTpl: '<p>{content}</p>',
+        itemTpl: '<h1 style="text-align:center">{title}</h1><hr/><p>{content}</p>',
         items: [{
                 docked: 'bottom',
                 ui: 'dark',
@@ -16,16 +16,17 @@ Ext.define('HERSS.view.BlogContentView', {
                         text: '返回',
                         name: 'back',
                         ui: 'round'
-                    },
-                    {
-                        xtype:'spacer'
-                    },
-                    {
-                        xtype: 'button',
-                        text: '评论',
-                        name: 'comment',
-                        ui: 'round'
                     }
+//                    ,
+//                    {
+//                        xtype:'spacer'
+//                    },
+//                    {
+//                        xtype: 'button',
+//                        text: '评论',
+//                        name: 'comment',
+//                        ui: 'round'
+//                    }
                 ]
             }],
         hidden: true,

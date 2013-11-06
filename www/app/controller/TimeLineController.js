@@ -31,8 +31,11 @@ Ext.define('HERSS.controller.TimeLineController', {
         Login: true
     },
     //events
-    onCommentButtonTap: function() {
-        this.createCommentList();
+    showCommentView: function() {
+        if (!this.getCommentList()) {
+            Ext.Viewport.add(Ext.create('HERSS.view.CommentList'));
+            console.log('create-CommentList');
+        }
         this.getCommentList().show();
     },
     hideView: function(obj, e, eOpts) {
@@ -84,13 +87,6 @@ Ext.define('HERSS.controller.TimeLineController', {
             success: onSuccess,
             failure: onFailure
         });
-    },
-    //function
-    createCommentList: function() {
-        if (!this.getCommentList()) {
-            Ext.Viewport.add(Ext.create('HERSS.view.CommentList'));
-            console.log('create-CommentList');
-        }
     },
     initData: function() {
         var proxy = Ext.create('Ext.data.proxy.Ajax', {

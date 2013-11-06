@@ -12,6 +12,7 @@ Ext.define('HERSS.view.TimeLineList.ShoppingList', {
         autoDestroy: false,
         variableHeights: true,
         disableSelection: true,
+        scrollToTopOnRefresh: false,
         items: {
             docked: 'top',
             xtype: 'toolbar',

@@ -26,7 +26,6 @@ Ext.define('HERSS.model.TimeLineListModel', {
 });
 Ext.define('HERSS.model.author', {
     extend: 'Ext.data.Model',
-
     config: {
         fields: [
             {name: 'uid', type: 'string'},
@@ -44,7 +43,14 @@ Ext.define('HERSS.model.post', {
             {name: 'title', type: 'string'},
             {name: 'summary', type: 'string'},
             {name: 'thumbnail', type: 'string'},
-            {name: 'timestamp', type: 'int'}
+            {
+                name: 'timestamp',
+                type: 'date',
+                convert: function(value, record) {
+                    var date = new Date(value);
+                    return date.toLocaleString();
+                }
+            }
         ]
     }
 });
