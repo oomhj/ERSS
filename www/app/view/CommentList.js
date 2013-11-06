@@ -1,15 +1,18 @@
-Ext.define('HERSS.view.BlogContentView', {
-    extend: 'Ext.DataView',
-    xtype: 'BlogContentView',
-    requires: ['HERSS.store.BlogContentStore'],
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+Ext.define('HERSS.view.CommentList', {
+    extend: 'Ext.List',
+    xtype: 'CommentList',
+//    requires:['HERSS.store.CommentListStore'],
     config: {
-        cls: 'messageInfo',
-        store: {xclass: 'HERSS.store.BlogContentStore'},
-        itemTpl: '<p>{content}</p>',
-        items: [{
+        items: [
+            {
                 docked: 'bottom',
-                ui: 'dark',
                 xtype: 'toolbar',
+                title: '发表评论',
                 items: [
                     {
                         xtype: 'button',
@@ -27,8 +30,18 @@ Ext.define('HERSS.view.BlogContentView', {
                         ui: 'round'
                     }
                 ]
-            }],
-        hidden: true,
+            }
+        ],
+        title: '评论',
+        infinite: true,
+        grouped: true,
+        autoDestroy: false,
+        variableHeights: true,
+        disableSelection: true,
+        scrollToTopOnRefresh: false,
+        emptyText: '<p class="no-searches">暂无评论</p>',
+        itemTpl: '<span>{name}</span>',
+//        store: {xclass:'HERSS.store.AppListStore'}
         showAnimation: Ext.browser.is.ie || Ext.browser.is.AndroidStock2 ? null : {
             type: 'slide',
             direction: 'left',
@@ -40,5 +53,5 @@ Ext.define('HERSS.view.BlogContentView', {
             duration: 250
         }
     }
-
-});
+}
+);

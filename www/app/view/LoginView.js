@@ -24,7 +24,6 @@ Ext.define('HERSS.view.LoginView', {
                 id: 'login',
                 text: '登录',
                 style: 'margin-left:auto;margin-right:auto;',
-                ui: 'action',
                 width: 150
             },
             { xtype: 'spacer' }

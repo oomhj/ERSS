@@ -2,8 +2,8 @@ Ext.define('HERSS.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'Main',
     requires: [
-        'HERSS.view.TimeLineList.TimeLineNavigator',
-        'HERSS.view.TimeLineList.ShoppingNavigator',
+        'HERSS.view.TimeLineList.TimeLineList',
+        'HERSS.view.TimeLineList.ShoppingList',
         'HERSS.view.AppList'
     ],
     config: {

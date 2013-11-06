@@ -37,7 +37,7 @@
 */
         "js": [
         {
-        "path": "touch/sencha-touch.js",
+        "path": "touch/sencha-touch-all.js",
                 "x-bootstrap": true
         },
         {
@@ -69,16 +69,10 @@
         "css": [
         {
         "path": "resources/css/sencha-touch.css",
-                "platform": ["desktop", "chrome", "firefox", "tizen", "android", "ios-classic"],
+                "platform": ["desktop", "chrome", "firefox", "tizen", "android", "ios-classic", "ios"],
                 "theme": "Default",
                 "update": "delta"
-        }, {
-        "path": "resources/css/cupertino.css",
-                "platform": ["ios"],
-                "theme": "cupertino",
-                "update": "delta"
         }
-
         ],
         /**
         * Used to automatically generate cache.manifest (HTML 5 application cache manifest) file when you build
@@ -130,4 +124,4 @@
         * Normally you should never change this value.
         */
         "id": "e16e1bae-31cb-4d1e-90d1-91313e56bbaf"
-}
+        }
