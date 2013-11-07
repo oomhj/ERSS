@@ -1,45 +1,44 @@
 Ext.define('HERSS.controller.TimeLineController', {
     extend: 'Ext.app.Controller',
     config: {
-        views: ['HERSS.view.BlogContentView', 'HERSS.view.CommentList'],
+        views: ['HERSS.view.BlogContentView','HERSS.view.SubscribeList'],
         stores: ['HERSS.store.BlogContentStore'],
         refs: {
-            MainView: "Main",
-            TimeLineList: 'Main TimeLineList',
-            ShoppingList: 'Main ShoppingList',
-            AppList: 'Main AppList',
-            NavigationView: 'navigationview',
-            BlogContentView: 'BlogContentView',
-            CommentList: 'CommentList',
-            BackButton: 'button[name=back]',
-            commentButton: 'BlogContentView button[name=comment]'
+            mainView: "Main",
+            timeLineList: 'Main > TimeLineList',
+            shoppingList: 'Main > ShoppingList',
+            appList: 'Main > AppList',
+            blogContentView: 'BlogContentView',
+            subscribeList: 'SubscribeList',
+            backButton: 'button[name=back]',
+//            commentButton: 'BlogContentView button[name="comment"]',
+            mySubscribeButton: 'Main AppList  button[name=mysubscribe]'
         },
         control: {
-            TimeLineList: {
+            timeLineList: {
                 itemtap: 'showContentView'
             },
-            ShoppingList: {
+            shoppingList: {
                 itemtap: 'showContentView'
             },
-            BackButton: {
+            backButton: {
                 tap: 'hideView'
             },
-            commentButton: {
-                tap: 'showCommentView'
+            mySubscribeButton: {
+                tap: 'showMySubscribe'
             }
-        },
-        Login: true
+        }
     },
     //events
-    showCommentView: function() {
-        if (!this.getCommentList()) {
-            Ext.Viewport.add(Ext.create('HERSS.view.CommentList'));
-            console.log('create-CommentList');
-        }
-        this.getCommentList().show();
-    },
     hideView: function(obj, e, eOpts) {
         obj.getParent().getParent().hide();
+    },
+    showMySubscribe: function(obj, e, eOpts) {
+        if (!this.getSubscribeList()) {
+            Ext.Viewport.add(Ext.create('HERSS.view.SubscribeList'));
+            console.log('create-SubscribeList');
+        }
+        this.getSubscribeList().show();
     },
     showContentView: function(list, idx, el, record) {
         if (!this.getBlogContentView()) {
@@ -48,14 +47,12 @@ Ext.define('HERSS.controller.TimeLineController', {
         }
         var TC = this;
         var id = record.data.postId;
-//        console.dir(record.data.author);
         var _BlogContentView = TC.getBlogContentView();
         _BlogContentView.setMasked({
             xtype: 'loadmask',
             message: '载入中...'
         });
         _BlogContentView.show();
-//        this.getMainView().setZIndex(-1);
         var onSuccess = function(response, opts) {
             var obj = Ext.decode(response.responseText);
             var status = obj.head.code;
@@ -72,7 +69,6 @@ Ext.define('HERSS.controller.TimeLineController', {
                     console.dir(TC.getMainView());
                     TC.getMainView().hide();
                     console.log('hide Main');
-//                    Ext.Viewport.getAt(1).setZIndex(-1);
                     var LC = HERSS.app.getController('LoginController');
                     LC.launch();
                 });
@@ -93,7 +89,7 @@ Ext.define('HERSS.controller.TimeLineController', {
     loadStore: function() {
         this.getTimeLineList().getStore().load();
         this.getShoppingList().getStore().load();
-//        this.getAppList().getStore().load();
+        this.getAppList().getStore().load();
     },
 //life circle
     launch: function() {

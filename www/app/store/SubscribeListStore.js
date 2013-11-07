@@ -10,6 +10,14 @@ Ext.define('HERSS.store.SubscribeListStore', {
             groupFn: function(record) {
                 return record.get('appDesc');
             }
+        },
+        proxy: {
+            xtype: 'TokenProxy',
+            url: HERSS.app.serverURL + 'app/detailInEachApp/',
+            reader: {
+                type: 'json',
+                rootProperty: 'body'
+            }
         }
     }
 
