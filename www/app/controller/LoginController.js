@@ -56,7 +56,7 @@ Ext.define('HERSS.controller.LoginController', {
             console.log('creat-LoginView');
             Ext.Viewport.add(Ext.create("HERSS.view.LoginView"));
         } else {
-            Ext.Viewport.getAt(0).show(true);
+            Ext.Viewport.getAt(0).show();
         }
     }
 

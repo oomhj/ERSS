@@ -1,4 +1,4 @@
-Ext.define('HERSS.view.TimeLineList.ShoppingList', {
+Ext.define('HERSS.view.ShoppingList', {
     extend: 'Ext.List',
     requires: [
         'Ext.plugin.PullRefresh',
@@ -53,7 +53,7 @@ Ext.define('HERSS.view.TimeLineList.ShoppingList', {
             '<span class = "origin FCLev5" > <time class="pubtime FCLev5">{post.timestamp}</time>来自{app.desc}</span>',
             '</header >',
             '<section >',
-            '<img class="" style="margin-left:0px;width:290px;visibility:visible;" src="{post.thumbnail}">',
+            '<img class="" style="margin-left:0px;max-width:290px;visibility:visible;" src="{post.thumbnail}">',
             '<div class="title">{post.title}</div>',
             '</div>',
             '</section>',

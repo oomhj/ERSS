@@ -69,9 +69,11 @@ Ext.define('HERSS.controller.TimeLineController', {
                 _BlogContentView.unmask();
                 Ext.Msg.alert('请求失败', obj.head.message, function() {
                     TC.getBlogContentView().hide();
-                    var LC = HERSS.app.getController('LoginController');
-                    Ext.Viewport.getAt(1).hide(false);
+                    console.dir(TC.getMainView());
+                    TC.getMainView().hide();
+                    console.log('hide Main');
 //                    Ext.Viewport.getAt(1).setZIndex(-1);
+                    var LC = HERSS.app.getController('LoginController');
                     LC.launch();
                 });
             }
@@ -88,55 +90,10 @@ Ext.define('HERSS.controller.TimeLineController', {
             failure: onFailure
         });
     },
-    initData: function() {
-        var proxy = Ext.create('Ext.data.proxy.Ajax', {
-            useDefaultXhrHeader: false,
-            limitParam: 'size', //设置limit参数，默认为limit
-//            pageParam: 'page.page', //设置page参数，默认为page
-            url: HERSS.app.serverURL + 'timeline/',
-            reader: {
-                type: 'json',
-                rootProperty: 'body.content'
-            }
-        });
-        this.getTimeLineList().getStore().setProxy(proxy);
-        console.log('init-TimeLineList');
-        proxy = Ext.create('Ext.data.proxy.Ajax', {
-            useDefaultXhrHeader: false,
-            limitParam: 'size', //设置limit参数，默认为limit
-//            pageParam: 'page.page', //设置page参数，默认为page
-            url: HERSS.app.serverURL + 'timeline/app/shopping',
-            reader: {
-                type: 'json',
-                rootProperty: 'body.content'
-            }
-        });
-        this.getShoppingList().getStore().setProxy(proxy);
-        console.log('init-ShoppingList');
-        proxy = Ext.create('Ext.data.proxy.Ajax', {
-            type: 'ajax',
-            useDefaultXhrHeader: false,
-            url: HERSS.app.serverURL + 'app/detailInEachApp/',
-            reader: {
-                type: 'json',
-                rootProperty: 'body'
-            }
-        });
-        this.getAppList().getStore().setProxy(proxy);
-        console.log('init-AppList');
-    },
-    updateToken: function() {
-        var token = HERSS.UserModel.get('token');
-        console.log('token:' + token);
-        var params = {'token': token};
-        this.getTimeLineList().getStore().getProxy().setExtraParams(params);
-        this.getShoppingList().getStore().getProxy().setExtraParams(params);
-        this.getAppList().getStore().getProxy().setExtraParams(params);
-    },
     loadStore: function() {
         this.getTimeLineList().getStore().load();
         this.getShoppingList().getStore().load();
-        this.getAppList().getStore().load();
+//        this.getAppList().getStore().load();
     },
 //life circle
     launch: function() {
@@ -144,14 +101,12 @@ Ext.define('HERSS.controller.TimeLineController', {
         if (!this.getMainView()) {
             console.log('creat-Main');
             Ext.Viewport.add(Ext.create('HERSS.view.Main'));
-            this.initData();
+            Ext.Viewport.getAt(1).setZIndex(0);
         } else {
-            this.updateToken();
             console.log('update-Token');
             this.loadStore();
             console.log('load-Store');
-            Ext.Viewport.getAt(1).show(true);
-            Ext.Viewport.getAt(1).setZIndex(0);
+            Ext.Viewport.getAt(1).show();
         }
 
     }

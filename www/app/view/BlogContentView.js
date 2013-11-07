@@ -5,8 +5,8 @@ Ext.define('HERSS.view.BlogContentView', {
     config: {
         cls: 'messageInfo',
         store: {xclass: 'HERSS.store.BlogContentStore'},
-        itemTpl: '<h1 style="text-align:center">{title}</h1><hr/><p>{content}</p>',
-        items: [{
+        itemTpl: '<h1 style="text-align:center;padding-top:10px;">{title}</h1><hr/><div style="max-width:320px">{content}</div>',
+        items: [{ 
                 docked: 'bottom',
                 ui: 'dark',
                 xtype: 'toolbar',

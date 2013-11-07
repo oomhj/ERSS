@@ -1,4 +1,4 @@
-Ext.define('HERSS.view.TimeLineList.TimeLineList', {
+Ext.define('HERSS.view.TimeLineList', {
     extend: 'Ext.List',
     requires: [
         'Ext.plugin.ListPaging',
