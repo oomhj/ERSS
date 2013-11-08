@@ -3,7 +3,7 @@ Ext.define('HERSS.model.BlogContentModel', {
     config: {
         fields: [
             {name: 'content', type: 'string'},
-            {name: 'summary', type:'string'},
+            {name: 'title', type:'string'},
             {name:'commentCount',type:'int'}
         ]
     }

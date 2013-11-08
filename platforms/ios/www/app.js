@@ -13,15 +13,15 @@
 Ext.application({
     name: 'HERSS',
     serverURL: 'http://10.213.212.58:8080/martian/',
-    //http://m.hand-china.com/martian/
+    //http://m.hand-china.com:8079
     //http://10.213.212.58:8080/martian/
     requires: [
         'Ext.MessageBox'
     ],
     controllers: [
         'LoginController',
-        'TimeLineController'
-
+        'TimeLineController',
+        'AppController'
     ],
     views: [
         'LoginView'
@@ -44,20 +44,5 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-    },
-    onUpdated: function() {
-        Ext.Msg.confirm(
-                "Application Update",
-                "This application has just successfully been updated to the latest version. Reload now?",
-                function(buttonId) {
-                    if (buttonId === 'yes') {
-                        window.location.reload();
-                    }
-                }
-        );
-    },
-    showLoginView: function() {  
-        Ext.Viewport.removeAll(false, true);
-        Ext.Viewport.add({xtype: "LoginView"});
     }
 });

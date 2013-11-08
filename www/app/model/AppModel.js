@@ -2,11 +2,11 @@ Ext.define('HERSS.model.AppModel', {
     extend: 'Ext.data.Model',
     config: {
         fields: [
-            {name: 'appId', type: 'string'},
-            {name: 'appDesc', type:'string'},
-            {name:'id',type:'string'},
-            {name:'name',type:'string'},
-            {name:'outerId',type:'string'}
+            {name: 'id', type: 'string'},
+            {name: 'alias', type:'string'},
+            {name:'desc',type:'string'},
+            {name:'vendor',type:'string'},
+            {name:'callbackUrl',type:'string'}
         ]
     }
 });

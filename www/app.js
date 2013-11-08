@@ -13,14 +13,15 @@
 Ext.application({
     name: 'HERSS',
     serverURL: 'http://10.213.212.58:8080/martian/',
-    //http://m.hand-china.com/martian/
+    //http://m.hand-china.com:8079
     //http://10.213.212.58:8080/martian/
     requires: [
         'Ext.MessageBox'
     ],
     controllers: [
         'LoginController',
-        'TimeLineController'
+        'TimeLineController',
+        'AppController'
     ],
     views: [
         'LoginView'

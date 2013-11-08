@@ -1,27 +1,18 @@
 Ext.define('HERSS.store.AppListStore', {
     extend: 'Ext.data.Store',
     requires: [
-        'HERSS.model.AppModel'
+        'HERSS.model.AppModel',
+        'HERSS.proxy.TokenProxy'
     ],
     config: {
         model: 'HERSS.model.AppModel',
-        autoLoad: true,
         proxy: {
-            type: 'ajax',
-            useDefaultXhrHeader: false,
-            extraParams: {'token': HERSS.UserModel.get('token')},
-            url: HERSS.app.serverURL + 'app/detailInEachApp/',
+            xtype: 'TokenProxy',
+            url: HERSS.app.serverURL + 'app/',
             reader: {
                 type: 'json',
-                rootProperty: 'body'
-            }
-        },
-        grouper: {
-            sortProperty: 'appId',
-            groupFn: function(record) {
-                return record.get('appDesc');
+                rootProperty: 'body.content'
             }
         }
     }
-
 });

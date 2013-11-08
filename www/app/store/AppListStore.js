@@ -6,20 +6,13 @@ Ext.define('HERSS.store.AppListStore', {
     ],
     config: {
         model: 'HERSS.model.AppModel',
-        grouper: {
-            sortProperty: 'appId',
-            groupFn: function(record) {
-                return record.get('appDesc');
-            }
-        },
         proxy: {
             xtype: 'TokenProxy',
-            url: HERSS.app.serverURL + 'app/detailInEachApp/',
+            url: HERSS.app.serverURL + 'app/',
             reader: {
                 type: 'json',
-                rootProperty: 'body'
+                rootProperty: 'body.content'
             }
         }
     }
-
 });

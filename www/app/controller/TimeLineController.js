@@ -1,7 +1,7 @@
 Ext.define('HERSS.controller.TimeLineController', {
     extend: 'Ext.app.Controller',
     config: {
-        views: ['HERSS.view.BlogContentView','HERSS.view.SubscribeList'],
+        views: ['HERSS.view.BlogContentView'],
         stores: ['HERSS.store.BlogContentStore'],
         refs: {
             mainView: "Main",
@@ -9,10 +9,8 @@ Ext.define('HERSS.controller.TimeLineController', {
             shoppingList: 'Main > ShoppingList',
             appList: 'Main > AppList',
             blogContentView: 'BlogContentView',
-            subscribeList: 'SubscribeList',
-            backButton: 'button[name=back]',
+            backButton: 'button[name="back"]'
 //            commentButton: 'BlogContentView button[name="comment"]',
-            mySubscribeButton: 'Main AppList  button[name=mysubscribe]'
         },
         control: {
             timeLineList: {
@@ -23,22 +21,12 @@ Ext.define('HERSS.controller.TimeLineController', {
             },
             backButton: {
                 tap: 'hideView'
-            },
-            mySubscribeButton: {
-                tap: 'showMySubscribe'
             }
         }
     },
     //events
     hideView: function(obj, e, eOpts) {
         obj.getParent().getParent().hide();
-    },
-    showMySubscribe: function(obj, e, eOpts) {
-        if (!this.getSubscribeList()) {
-            Ext.Viewport.add(Ext.create('HERSS.view.SubscribeList'));
-            console.log('create-SubscribeList');
-        }
-        this.getSubscribeList().show();
     },
     showContentView: function(list, idx, el, record) {
         if (!this.getBlogContentView()) {
