@@ -13,7 +13,7 @@ Ext.define('HERSS.store.SubscribeListStore', {
         },
         proxy: {
             xtype: 'TokenProxy',
-            url: HERSS.app.serverURL + 'app/detailInEachApp/',
+            url: HERSS.app.serverURL + 'app/subscribe/detailInEachApp/',
             reader: {
                 type: 'json',
                 rootProperty: 'body'

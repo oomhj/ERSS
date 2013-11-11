@@ -8,7 +8,7 @@ Ext.define('HERSS.view.ShoppingList', {
     xtype: 'ShoppingList',
     config: {
         title: '购物推荐',
-        iconCls: 'favorites',
+        iconCls: 'cart',
         autoDestroy: false,
         variableHeights: true,
         disableSelection: true,

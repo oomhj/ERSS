@@ -33,7 +33,7 @@ Ext.define('HERSS.view.AppList', {
             {xclass: 'HERSS.utils.FirstPagePullRefresh'}
         ],
         title: '订阅',
-        iconCls: 'time',
+        iconCls: 'rss',
         infinite: true,
         autoDestroy: false,
         variableHeights: true,
@@ -41,10 +41,9 @@ Ext.define('HERSS.view.AppList', {
         scrollToTopOnRefresh: false,
         emptyText: '<p class="no-searches">暂无可订阅应用</p>',
         itemTpl: [
-            '<div class="avatar"><img src="default-app.png" alt="" width="35" height="35"/></div>',
-            '<span class = "FCLev6 nikename"> {alias} </span>',
-            '<span class="pubtime FCLev5">提供者：{vendor}</span>',
-            '<span class="origin FCLev5">{desc}</span>'
+            '<div class="appItem">b</div>',
+            '<span class = "FCLev6 nikename"> {desc} </span>',
+            '<span class="origin FCLev5">提供者：{vendor}</span>'
         ],
         store: {xclass: 'HERSS.store.AppListStore'}
     }

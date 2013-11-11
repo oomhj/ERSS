@@ -50,7 +50,7 @@ Ext.define('HERSS.controller.AppController', {
             Ext.Msg.alert('请求失败', response.status, Ext.emptyFn);
         };
         Ext.Ajax.request({
-            url: HERSS.app.serverURL + 'app/' + record.data.appId + '/subscribed/' + record.data.itemId + '/delete',
+            url: HERSS.app.serverURL + 'app/subscribe/' + record.data.appId + '/' + record.data.itemId + '/delete',
             params: {'token': HERSS.UserModel.get('token')},
             method: 'POST',
             success: onSuccess,

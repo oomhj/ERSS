@@ -8,7 +8,7 @@ Ext.define('HERSS.view.TimeLineList', {
     xtype: 'TimeLineList',
     config: {
         title: '消息',
-        iconCls: 'home',
+        iconCls: 'message',
         infinite: true,
         autoDestroy: false,
         variableHeights: true,

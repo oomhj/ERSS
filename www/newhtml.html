@@ -9,62 +9,15 @@ and open the template in the editor.
         <title>……</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="touch/resources/css/sencha-touch.css">
-        <script type="text/javascript" src="touch/sencha-touch-all.js"></script>
+        <style>
+            .test{
+                height: 50px;
+                width: 50px;
+                background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #FF0000), color-stop(50%, #CC0033), color-stop(51%, #CC0000), color-stop(100%, #990000));
+            }
+        </style>
     </head>
     <body>
-        <script>
-            Ext.application(
-                    {
-                        name: "sencha",
-                        launch: function()
-                        {
-                            var panel = Ext.create('Ext.Panel', {
-                                layout: 'card',
-                                items: [
-                                    {
-                                        docked: 'bottom',
-                                        ui: 'dark',
-                                        xtype: 'toolbar',
-                                        items: [
-                                            {
-                                                xtype: 'button',
-                                                text: '返回',
-                                                name: 'back',
-                                                ui: 'round'
-                                            },
-                                            {
-                                                xtype: 'spacer'
-                                            },
-                                            {
-                                                xtype: 'button',
-                                                text: '评论',
-                                                name: 'comment',
-                                                ui: 'round'
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        html: "First Item"
-                                    },
-                                    {
-                                        html: "Second Item"
-                                    },
-                                    {
-                                        html: "Third Item"
-                                    },
-                                    {
-                                        html: "Fourth Item"
-                                    }
-                                ]
-                            });
-
-                            Ext.Viewport.add(panel);
-                            panel.setActiveItem(1);
-                        }
-                    }
-            );
-
-        </script>
+        <div class="test"></div>
     </body>
 </html>
