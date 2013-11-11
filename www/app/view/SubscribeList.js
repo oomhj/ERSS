@@ -45,16 +45,15 @@ Ext.define('HERSS.view.SubscribeList', {
         infinite: true,
         grouped: true,
         autoDestroy: false,
-        variableHeights: true,
+//        variableHeights: true,
         disableSelection: true,
         scrollToTopOnRefresh: false,
+        disclosureProperty: 'disclosure',
         emptyText: '<p class="no-searches">暂无订阅应用</p>',
         itemTpl: '<span>{name}</span>',
         store: {xclass: 'HERSS.store.SubscribeListStore'},
         hidden: true,
-//        onItemDisclosure: function() {
-//            console.log('onItemDisclosure');
-//        },
+        onItemDisclosure: true,
         showAnimation: Ext.browser.is.ie || Ext.browser.is.AndroidStock2 ? null : {
             type: 'slide',
             direction: 'left',
