@@ -2,7 +2,6 @@ Ext.define('HERSS.view.AppConfigView', {
     extend: 'Ext.Panel',
     xtype: 'AppConfigView',
     config: {
-        layout: 'fit',
         items: [{
                 docked: 'bottom',
                 ui: 'dark',
@@ -19,7 +18,7 @@ Ext.define('HERSS.view.AppConfigView', {
         ],
         hidden: true,
         scroll: false,
-        html: '<div style="width:100%;height:100%;-webkit-overflow-scrolling:touch;overflow:scroll;"><iframe style="border:0px;width:100%;height:100%;" src="http://bing.com/">Your device does not support iframes.</iframe></div>',
+        html: '<div id="configframediv" style="width:100%;height:100%;-webkit-overflow-scrolling:touch !important;overflow:auto !important;"><iframe id="configframe" style="width:100%;height:auto;border:0px" scrolling="no" src="newhtml.html">Your device does not support iframes.</iframe></div>',
         showAnimation: Ext.browser.is.ie || Ext.browser.is.AndroidStock2 ? null : {
             type: 'slide',
             direction: 'left',

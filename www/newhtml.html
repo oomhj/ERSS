@@ -11,13 +11,21 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
         <style>
             .test{
-                height: 50px;
-                width: 50px;
-                background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #FF0000), color-stop(50%, #CC0033), color-stop(51%, #CC0000), color-stop(100%, #990000));
+                height: 1000px;
+                width: 100%;
+                background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(50%, #aaaaaa), color-stop(51%, #999999), color-stop(100%, #000000));
             }
+            #wrapper{height:100px;-webkit-overflow-scrolling:touch;overflow:auto;}
         </style>
     </head>
-    <body>
+    <body style="margin:0px;">
         <div class="test"></div>
+        <script>
+            function resize() {
+                window.parent.document.getElementById("configframe").style.height = document.body.scrollHeight+ "px";
+                window.parent.document.getElementById("configframediv").style.height = window.parent.document.body.scrollHeight-40+"px";
+            }
+            window.onload = resize;
+        </script>
     </body>
 </html>
