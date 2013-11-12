@@ -6,6 +6,6 @@ Ext.define('HERSS.proxy.TokenProxy', {
         useDefaultXhrHeader: false
     },
     getExtraParams: function() {
-        return {'token': HERSS.UserModel.get('token')};
+        return {'token': HERSS.UserModel.get('token'),'sort':'data.ts,DESC'};
     }
 });

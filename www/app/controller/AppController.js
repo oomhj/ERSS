@@ -6,7 +6,8 @@ Ext.define('HERSS.controller.AppController', {
             appList: 'Main > AppList',
             subscribeList: 'SubscribeList',
             appConfigView: 'AppConfigView',
-            mySubscribeButton: 'Main AppList  button[name="mysubscribe"]'
+            mySubscribeButton: 'Main AppList  button[name="mysubscribe"]',
+            logoutButton: 'SubscribeList button[name="logout"]'
         },
         control: {
             mySubscribeButton: {
@@ -17,6 +18,9 @@ Ext.define('HERSS.controller.AppController', {
             },
             subscribeList: {
                 disclose: 'disclose'
+            },
+            logoutButton:{
+                tap:'logout'
             }
         }
     },
@@ -38,10 +42,9 @@ Ext.define('HERSS.controller.AppController', {
 //                Ext.Msg.alert('退订成功', response.status, Ext.emptyFn);
             } else {
                 Ext.Msg.alert('请求失败', res.head.message, function() {
-                    TC.getBlogContentView().hide();
-                    TC.getMainView().hide();
-                    var LC = HERSS.app.getController('LoginController');
-                    LC.launch();
+                    _subscribeList.hide();
+                    HERSS.app.getController('TimeLineController').getMainView().hide();
+                    HERSS.app.getController('LoginController').launch();
                 });
             }
         };
@@ -71,5 +74,13 @@ Ext.define('HERSS.controller.AppController', {
             console.log('create-AppConfigView');
         }
         this.getAppConfigView().show();
+    },
+    logout: function() {
+        if (HERSS.UserModel) {
+            HERSS.UserModel.destroy();
+        }
+        this.getSubscribeList().hide();
+        HERSS.app.getController('TimeLineController').getMainView().hide();
+        HERSS.app.getController('LoginController').launch();
     }
 });

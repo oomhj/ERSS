@@ -85,7 +85,6 @@ Ext.define('HERSS.controller.TimeLineController', {
             Ext.Viewport.add(Ext.create('HERSS.view.Main'));
             Ext.Viewport.getAt(1).setZIndex(0);
         } else {
-            console.log('update-Token');
             this.loadStore();
             console.log('load-Store');
             Ext.Viewport.getAt(1).show();

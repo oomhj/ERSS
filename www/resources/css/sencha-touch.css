@@ -4843,18 +4843,12 @@ body.x-desktop {
 }
 .avatar {
     float: left;
+    width: 35px;
+    height: 35px;
     margin: 0 10px 0 0;
     border: rgba(0, 0, 0, .05) solid 1px;
     -webkit-border-radius: 2px;
     border-radius: 2px
-}
-
-.avatar img {
-    top: 0;
-    float: left;
-    -webkit-border-radius: 1px;
-    border-radius: 1px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 .nikename {
     display: inline-block;
