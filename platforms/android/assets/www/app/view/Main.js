@@ -2,17 +2,18 @@ Ext.define('HERSS.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'Main',
     requires: [
-        'HERSS.view.TimeLineList.TimeLineNavigator',
-        'HERSS.view.TimeLineList.ShoppingNavigator'
+        'HERSS.view.TimeLineList',
+        'HERSS.view.ShoppingList',
+        'HERSS.view.AppList'
     ],
     config: {
         tabBarPosition: 'bottom',
         tabBar: {
         },
         items: [
-            {xclass: 'HERSS.view.TimeLineList.TimeLineNavigator'},
-            {xclass: 'HERSS.view.TimeLineList.ShoppingNavigator'}
-//            {xclass: 'HERSS.view.AppList'}
+            {xclass: 'HERSS.view.TimeLineList'},
+            {xclass: 'HERSS.view.ShoppingList'},
+            {xclass: 'HERSS.view.AppList'}
         ]
     }
 });

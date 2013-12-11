@@ -11,7 +11,7 @@ Ext.define('HERSS.store.ShoppingListStore', {
             xtype: 'TokenProxy',
             limitParam: 'size', //设置limit参数，默认为limit
 //            pageParam: 'page.page', //设置page参数，默认为page
-            url: HERSS.app.serverURL + 'timeline/app/shopping',
+            url: HERSS.app.serverURL + 'timeline/app/life',
             reader: {
                 type: 'json',
                 rootProperty: 'body.content'

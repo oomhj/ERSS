@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.coolappz.HTML5Application" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.coolappz.ERSS" version="1.0.0">
     <name>ERSS</name>
     <description>企业订阅</description>
     <author email="haojie.ma@hand-china.com" href="http://www.hand-china.com">Hero.Ma</author>

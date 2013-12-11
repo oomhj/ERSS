@@ -54,9 +54,7 @@ Ext.define('HERSS.controller.TimeLineController', {
                 _BlogContentView.unmask();
                 Ext.Msg.alert('请求失败', obj.head.message, function() {
                     TC.getBlogContentView().hide();
-                    console.dir(TC.getMainView());
                     TC.getMainView().hide();
-                    console.log('hide Main');
                     var LC = HERSS.app.getController('LoginController');
                     LC.launch();
                 });
@@ -87,7 +85,6 @@ Ext.define('HERSS.controller.TimeLineController', {
             Ext.Viewport.add(Ext.create('HERSS.view.Main'));
             Ext.Viewport.getAt(1).setZIndex(0);
         } else {
-            console.log('update-Token');
             this.loadStore();
             console.log('load-Store');
             Ext.Viewport.getAt(1).show();

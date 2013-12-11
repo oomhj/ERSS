@@ -11,19 +11,19 @@ Ext.define('HERSS.view.LoginView', {
             {
                 xtype: 'panel',
                 style: 'text-align:center;font-size: 24pt;',
-                html: 'HERSS'
+                html: '企业信息聚合'
             },
+            { xtype: 'spacer' },
             {
                 xtype: 'LoginForm',
                 scrollable: null
-            },
+            },{ xtype: 'spacer' },
             {
                 xtype: 'button',
                 name: 'login',
                 id: 'login',
                 text: '登录',
                 style: 'margin-left:auto;margin-right:auto;',
-                ui: 'action',
                 width: 150
             },
             { xtype: 'spacer' }

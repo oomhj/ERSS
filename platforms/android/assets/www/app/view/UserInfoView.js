@@ -1,7 +1,6 @@
 Ext.define('HERSS.view.UserInfoView', {
     extend: 'Ext.Container',
     xtype: 'UserInfo',
-
     config: {
         cls: 'UserInfo',
         tpl: [

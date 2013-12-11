@@ -77,7 +77,9 @@
     [devProps setObject:[device systemVersion] forKey:@"version"];
     [devProps setObject:[device uniqueAppInstanceIdentifier] forKey:@"uuid"];
     [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
-
+    NSString * pushtoken = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
+    pushtoken = pushtoken?pushtoken:@"";
+    [devProps setObject:pushtoken forKey:@"pushtoken"];
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;
 }

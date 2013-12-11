@@ -4,17 +4,18 @@ Ext.define('HERSS.model.UserModel', {
     config: {
         fields: [
             {name: 'token', type: 'string'},
-            {name: 'deviceType', type: 'string'}
+            {name: 'deviceType', type: 'string'},
+            {name: 'email', type: 'string'}
         ],
         associations: [
             {
                 type: 'hasOne',
-                model: 'HERSS.model.author',
-                name: 'author'
+                model: 'HERSS.model.user',
+                name: 'user'
             }
         ]
     }
-})
+});
 Ext.define('HERSS.model.User', {
     extend: 'Ext.data.Model',
     config: {
@@ -27,4 +28,4 @@ Ext.define('HERSS.model.User', {
             {name: 'title', type: 'string'}
         ]
     }
-})
+});

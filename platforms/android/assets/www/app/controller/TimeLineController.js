@@ -2,74 +2,93 @@ Ext.define('HERSS.controller.TimeLineController', {
     extend: 'Ext.app.Controller',
     config: {
         views: ['HERSS.view.BlogContentView'],
-        stores:['HERSS.store.BlogContentStore'],
+        stores: ['HERSS.store.BlogContentStore'],
         refs: {
-            TimeLineNavigator: 'TimeLineNavigator',
-            ShoppingNavigator:'ShoppingNavigator',
-            TimeLineList: 'TimeLineList',
-            ShoppingList:'ShoppingList'
+            mainView: "Main",
+            timeLineList: 'Main > TimeLineList',
+            shoppingList: 'Main > ShoppingList',
+            appList: 'Main > AppList',
+            blogContentView: 'BlogContentView',
+            backButton: 'button[name="back"]'
+//            commentButton: 'BlogContentView button[name="comment"]',
         },
         control: {
-            TimeLineNavigator: {
-                beforepop: 'onTimeLineListCardBeforePop'
+            timeLineList: {
+                itemtap: 'showContentView'
             },
-            TimeLineList: {
-                itemtap: 'onTimeLineItemTap'
+            shoppingList: {
+                itemtap: 'showContentView'
             },
-            ShoppingList:{
-                itemtap: 'onShoppingItemTap'  
+            backButton: {
+                tap: 'hideView'
             }
-        },
-        Login: true
+        }
     },
-
-    onTimeLineItemTap: function (list, idx, el, record) {
-        this.createBlogContentView();
-        this._BlogContentView.config.title = record.data.meta.title;
-        this.getTimeLineNavigator().push(this._BlogContentView);
-        this.showContentView(record);
+    //events
+    hideView: function(obj, e, eOpts) {
+        obj.getParent().getParent().hide();
     },
-    onShoppingItemTap: function (list, idx, el, record) {
-        this.createBlogContentView();
-        this._BlogContentView.config.title = record.data.meta.title;
-        this.getShoppingNavigator().push(this._BlogContentView);
-        this.showContentView(record);
-    }, 
-    showContentView:function(record){
-        this._BlogContentView.setMasked({
+    showContentView: function(list, idx, el, record) {
+        if (!this.getBlogContentView()) {
+            Ext.Viewport.add(Ext.create('HERSS.view.BlogContentView'));
+            console.log('create-BlogContentView');
+        }
+        var TC = this;
+        var id = record.data.postId;
+        var _BlogContentView = TC.getBlogContentView();
+        _BlogContentView.setMasked({
             xtype: 'loadmask',
             message: '载入中...'
         });
-        var id = record.data.postId;
-        var  _BlogContentView = this._BlogContentView;
-        Ext.Ajax.request({
-            url:HERSS.app.serverURL+'timeline/'+id,
-            params:{'token':HERSS.UserModel.get('token')},
-            method :'GET',
-            success: function(response, opts) {
-                var obj = Ext.decode(response.responseText);
-                var status = obj.head.code;
-                if(status==='ok'){
-                    var store = _BlogContentView.getStore();
-                    store.removeAt(0);
-                    store.add(obj.body.data);                   
-                    _BlogContentView.unmask();
-                }else{
-                    _BlogContentView.unmask();
-                    Ext.Msg.alert('请求失败',obj.head.message, Ext.emptyFn);
-                }
-
-            },
-            failure: function(response, opts) {
-                this._BlogContentView.unmask();
-                Ext.Msg.alert('请求失败',response.status, Ext.emptyFn);
+        _BlogContentView.show();
+        var onSuccess = function(response, opts) {
+            var obj = Ext.decode(response.responseText);
+            var status = obj.head.code;
+            if (status === 'ok') {
+                var store = _BlogContentView.getStore();
+                store.removeAt(0);
+                store.add(obj.body.data);
+//                TC.getCommentButton().setBadgeText(obj.body.data.commentCount);
+                _BlogContentView.unmask();
+            } else {
+                _BlogContentView.unmask();
+                Ext.Msg.alert('请求失败', obj.head.message, function() {
+                    TC.getBlogContentView().hide();
+                    TC.getMainView().hide();
+                    var LC = HERSS.app.getController('LoginController');
+                    LC.launch();
+                });
             }
+        };
+        var onFailure = function(response, opts) {
+            _BlogContentView.unmask();
+            Ext.Msg.alert('请求失败', response.status, Ext.emptyFn);
+        };
+        Ext.Ajax.request({
+            url: HERSS.app.serverURL + 'timeline/' + id,
+            params: {'token': HERSS.UserModel.get('token')},
+            method: 'GET',
+            success: onSuccess,
+            failure: onFailure
         });
     },
-    createBlogContentView:function(){
-       if (!this._BlogContentView) {
-            this._BlogContentView = Ext.widget('BlogContentView');
-        } 
+    loadStore: function() {
+        this.getTimeLineList().getStore().load();
+        this.getShoppingList().getStore().load();
+        this.getAppList().getStore().load();
+    },
+//life circle
+    launch: function() {
+        console.log('TC-launch');
+        if (!this.getMainView()) {
+            console.log('creat-Main');
+            Ext.Viewport.add(Ext.create('HERSS.view.Main'));
+            Ext.Viewport.getAt(1).setZIndex(0);
+        } else {
+            this.loadStore();
+            console.log('load-Store');
+            Ext.Viewport.getAt(1).show();
+        }
+
     }
-    //life circle
 });

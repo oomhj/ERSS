@@ -6,4 +6,4 @@ Ext.define('HERSS.store.BlogContentStore', {
     config: {
         model:'HERSS.model.BlogContentModel'
     }
-})
+});
