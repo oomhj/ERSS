@@ -72,7 +72,7 @@
                 "platform": ["desktop", "chrome", "firefox", "tizen", "android", "ios-classic"],
                 "theme": "Default",
                 "update": "delta"
-        },
+        },        
         {
         "path": "resources/css/cupertino.css",
                 "platform": ["ios"],

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		070A2A118858439CAFE64D4C /* CDVCapture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D7E26838BE0A4EA6873ADA98 /* CDVCapture.bundle */; };
 		10CC7C21B4C948C08C8577C4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C19E36DE634651A9BF5FB2 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -406,6 +405,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 500;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 63M9FZGR9Q;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ERSS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -574,6 +578,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -609,6 +614,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ERSS/ERSS-Prefix.pch";

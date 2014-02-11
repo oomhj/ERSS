@@ -46,7 +46,7 @@ Ext.define('HERSS.view.TimeLineList', {
             '</section>',
             '<tpl if="post.thumbnail">',
             '<section>',
-            '<img style="margin-left:0px;height:200px;visibility:visible;" onerror="this.src=\"default.png\"" src="{post.thumbnail}" >',
+            '<img style="margin-left:0px;height:200px;visibility:visible;" onerror="this.src=\'resources/imgerror.jpg\'" src="{post.thumbnail}" >',
             '</section>',
             '</tpl>',
             '</article>'

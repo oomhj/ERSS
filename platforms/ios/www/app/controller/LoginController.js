@@ -18,31 +18,30 @@ Ext.define('HERSS.controller.LoginController', {
         }
     },
     onLoginButtonTap: function() {
-           console.log('uuid:'+device.uuid);
-           var LC = this;
-           var onSuccess = function(response, opts) {
-               var obj = Ext.decode(response.responseText);
-               var status = obj.head.code;
-               if (status === 'ok') {
-                   LC.updateUserInfo(obj.body);
-                   var TC = HERSS.app.getController('TimeLineController');
-                   Ext.Viewport.getAt(0).hide(true);
-                   TC.launch();
-               } else {
-                   Ext.Msg.alert('登录失败', obj.head.message, Ext.emptyFn);
-               }
-           };
-           var onFailure = function(response, opts) {
-               Ext.Msg.alert('请求失败', response.status, Ext.emptyFn);
-           };
-           var params  = Ext.urlEncode(LC.getLoginForm().getValues(true))+'&pushToken='+device.uuid;
-           Ext.Ajax.request({
-                            url: HERSS.app.serverURL + 'login',
-                            method: 'POST',
-                            params: params,
-                            success: onSuccess,
-                            failure: onFailure
-                            });
+        var LC = this;
+        var onSuccess = function(response, opts) {
+            var obj = Ext.decode(response.responseText);
+            var status = obj.head.code;
+            if (status === 'ok') {
+                LC.updateUserInfo(obj.body);
+                var TC = HERSS.app.getController('TimeLineController');
+                Ext.Viewport.getAt(0).hide(true);
+                TC.launch();
+            } else {
+                Ext.Msg.alert('登录失败', obj.head.message, Ext.emptyFn);
+            }
+        };
+        var onFailure = function(response, opts) {
+            Ext.Msg.alert('请求失败', response.status, Ext.emptyFn);
+        };
+        var params  = Ext.urlEncode(LC.getLoginForm().getValues(true))+'&pushToken='+device.pushtoken;
+        Ext.Ajax.request({
+            url: HERSS.app.serverURL + 'login',
+            method: 'POST',
+            params: params,
+            success: onSuccess,
+            failure: onFailure
+        });
     },
     updateUserInfo: function(userInfo) {
         if (!HERSS.UserModel) {

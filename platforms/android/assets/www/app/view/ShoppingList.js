@@ -39,7 +39,7 @@ Ext.define('HERSS.view.ShoppingList', {
             '<span class = "origin FCLev5" > <time class="pubtime FCLev5">{post.timestamp}</time>来自{app.desc}</span>',
             '</header >',
             '<section >',
-            '<img  style="margin-left:0px;height:200px;visibility:visible;" onerror="this.src=\"default.png\"" src="{post.thumbnail}">',
+            '<img  style="margin-left:0px;height:200px;visibility:visible;" onerror="this.src=\'resources/imgerror.jpg\'" src="{post.thumbnail}">',
             '<div class="title">{post.title}</div>',
             '</div>',
             '</section>',

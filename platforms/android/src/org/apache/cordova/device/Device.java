@@ -29,10 +29,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.coolappz.ERSS.preference.PushTokenBroadcastReceiver;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
@@ -42,15 +46,15 @@ public class Device extends CordovaPlugin {
     public static String cordovaVersion = "dev";              // Cordova version
     public static String platform = "Android";                  // Device OS
     public static String uuid;                                  // Device UUID
-
+    public static String pushtoken;                                  // Push Token
     BroadcastReceiver telephonyReceiver = null;
-
+    private SharedPreferences mPreferences;
     /**
      * Constructor.
      */
     public Device() {
     }
-
+	
     /**
      * Sets the context of the Command. This can then be used to do things like
      * get file paths associated with the Activity.
@@ -61,6 +65,8 @@ public class Device extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         Device.uuid = getUuid();
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(cordova.getActivity());
+        Device.pushtoken = mPreferences.getString(PushTokenBroadcastReceiver.KEY_PUSH_TOKEN, "");
         this.initTelephonyReceiver();
     }
 
@@ -75,6 +81,7 @@ public class Device extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("getDeviceInfo")) {
             JSONObject r = new JSONObject();
+            r.put("pushtoken", Device.pushtoken);
             r.put("uuid", Device.uuid);
             r.put("version", this.getOSVersion());
             r.put("platform", Device.platform);

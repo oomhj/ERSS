@@ -12,7 +12,7 @@
 
 Ext.application({
     name: 'HERSS',
-    serverURL: 'http://m.hand-china.com:8079/',
+    serverURL: 'http://10.213.212.58:8080/martian/',
     //http://m.hand-china.com:8079
     //http://10.213.212.58:8080/martian/
     requires: [

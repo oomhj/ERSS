@@ -19,8 +19,8 @@ Ext.define('HERSS.controller.AppController', {
             subscribeList: {
                 disclose: 'disclose'
             },
-            logoutButton:{
-                tap:'logout'
+            logoutButton: {
+                tap: 'logout'
             }
         }
     },
@@ -73,9 +73,10 @@ Ext.define('HERSS.controller.AppController', {
             Ext.Viewport.add(Ext.create('HERSS.view.AppConfigView'));
             console.log('create-AppConfigView');
         }
-        if(record.callbackUrl){
-            this.getAppConfigView().setHtml('<div id="configframediv" style="width:100%;height:100%;-webkit-overflow-scrolling:touch !important;overflow:auto !important;"><iframe id="configframe" style="width:100%;height:auto;border:0px" scrolling="no" src="'+record.callbackUrl+'">Your device does not support iframes.</iframe></div>');
-        }else{
+        if (record.data.callbackUrl) {
+            this.getAppConfigView().setHtml('<div id="configframediv" style="width:100%;height:460px;-webkit-overflow-scrolling:touch !important;overflow:auto !important;margin-top:20px;"><iframe id="configframe" style="width:100%;height:auto;border:0px" scrolling="no" src="' + record.data.callbackUrl + '?email=' + HERSS.UserModel.get('email') +'&token=' + HERSS.UserModel.get('token')+'">Your device does not support iframes.</iframe></div>');
+            console.log('callback');
+        } else {
             this.getAppConfigView().setHtml('<h1 style="text-align:center;padding-top:10px;">此应用暂无订阅信息</h1>');
         }
         this.getAppConfigView().show();

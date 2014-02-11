@@ -69,8 +69,14 @@
         "css": [
         {
         "path": "resources/css/sencha-touch.css",
-                "platform": ["desktop", "chrome", "firefox", "tizen", "android", "ios-classic", "ios"],
+                "platform": ["desktop", "chrome", "firefox", "tizen", "android", "ios-classic"],
                 "theme": "Default",
+                "update": "delta"
+        },        
+        {
+        "path": "resources/css/cupertino.css",
+                "platform": ["ios"],
+                "theme": "cupertino",
                 "update": "delta"
         }
         ],

@@ -20,8 +20,10 @@
 package com.coolappz.ERSS;
 
 import android.os.Bundle;
-import org.apache.cordova.*;
+import android.util.Log;
 
+import org.apache.cordova.*;
+import com.igexin.slavesdk.MessageManager;
 public class HTML5Application extends CordovaActivity 
 {
     @Override
@@ -32,6 +34,12 @@ public class HTML5Application extends CordovaActivity
         // Set by <content src="index.html" /> in config.xml
         super.loadUrl(Config.getStartUrl());
         //super.loadUrl("file:///android_asset/www/index.html")
+      //推送
+        initPushResource();
+    }
+    public void initPushResource(){
+    	MessageManager.getInstance().initialize(this.getApplicationContext());
+    	Log.i("sdf","000000000000000000000000000000000000000000000000000000");
     }
 }
 
