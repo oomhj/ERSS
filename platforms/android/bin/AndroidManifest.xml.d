@@ -1,2 +1,2 @@
-/Users/mahaojie/Documents/javascript/ERSS/platforms/android/bin/AndroidManifest.xml : \
-/Users/mahaojie/Documents/javascript/ERSS/platforms/android/AndroidManifest.xml \
+/Users/jason/Documents/NetBeansProjects/ERSS/platforms/android/bin/AndroidManifest.xml : \
+/Users/jason/Documents/NetBeansProjects/ERSS/platforms/android/AndroidManifest.xml \

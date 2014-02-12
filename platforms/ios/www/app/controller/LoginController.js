@@ -34,7 +34,8 @@ Ext.define('HERSS.controller.LoginController', {
         var onFailure = function(response, opts) {
             Ext.Msg.alert('请求失败', response.status, Ext.emptyFn);
         };
-        var params  = Ext.urlEncode(LC.getLoginForm().getValues(true))+'&pushToken='+device.pushtoken;
+        var params  = Ext.urlEncode(LC.getLoginForm().getValues(true));
+        //'&pushToken='+device.pushtoken;
         Ext.Ajax.request({
             url: HERSS.app.serverURL + 'login',
             method: 'POST',

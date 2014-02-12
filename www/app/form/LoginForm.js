@@ -11,14 +11,14 @@ Ext.define('HERSS.form.LoginForm', {
                         xtype: 'emailfield',
                         name: 'email',
                         label: '邮箱',
-                        value:'frank.fan@hand-china.com'
+                        value:'haojie.ma@hand-china.com'
                         //frank.fan@hand-china.com haojie.ma@hand-china.com
                     },
                     {
                         xtype: 'passwordfield',
                         name: 'encPassword',
                         label: '密码',
-                        value:'1'
+                        value:'hand3752'
 
                     },
                     {

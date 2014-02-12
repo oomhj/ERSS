@@ -54,28 +54,6 @@
         </style>
         <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/lib/jquery-1.10.2.js"></script>
         <script>
-            var doLogin = function() {
-                var root = "<%=request.getContextPath()%>";
-                $.ajax({
-                    url: root + "/api/app/526a10a97a55b178943077a5/subscribed/add/",
-                        data: {"subscribeItems":[{"name":"shopping","outerId":"s00001","description":"购物推荐"}],"subscriber":"<%=request.getParameter("email")%>"},
-                    type: 'POST',
-                    success: function(data) {
-                        if (data.head.code == 'ok') {
-                            $("sub").style.display="none";
-                            $("hassub").style.display="block";
-                        } else {
-                            alert(data.head.message);
-                        }
-                    },
-                    error: function() {
-
-                    },
-                    headers: {
-                        "Accept": "application/json; charset=utf-8"
-                    }
-                });
-            }
             var test = function(){alert("!");};
         </script>
     </head>
@@ -85,12 +63,5 @@
             <div id="hassub" style="color:#0974a8;display:none">您已订阅购物推荐</div>
             <button id="sub" type="button" onclick="javascript:test();" class="button red">点击订阅</button>
         </div>
-        <script>
-            function resize() {
-                window.parent.document.getElementById("configframe").style.height = document.body.scrollHeight + "px";
-                window.parent.document.getElementById("configframediv").style.height = window.parent.document.body.scrollHeight - 40 + "px";
-            }
-            window.onload = resize;
-        </script>
     </body>
 </html>

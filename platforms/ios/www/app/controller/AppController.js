@@ -74,7 +74,7 @@ Ext.define('HERSS.controller.AppController', {
             console.log('create-AppConfigView');
         }
         if (record.data.callbackUrl) {
-            this.getAppConfigView().setHtml('<div id="configframediv" style="width:100%;height:460px;-webkit-overflow-scrolling:touch !important;overflow:auto !important;margin-top:20px;"><iframe id="configframe" style="width:100%;height:auto;border:0px" scrolling="no" src="' + record.data.callbackUrl + '?email=' + HERSS.UserModel.get('email') +'&token=' + HERSS.UserModel.get('token')+'">Your device does not support iframes.</iframe></div>');
+            this.getAppConfigView().setHtml('<a href="http://www.baidu.com">test</a>');
             console.log('callback');
         } else {
             this.getAppConfigView().setHtml('<h1 style="text-align:center;padding-top:10px;">此应用暂无订阅信息</h1>');
