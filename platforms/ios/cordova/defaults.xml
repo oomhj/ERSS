@@ -50,8 +50,6 @@
     </feature>
     <name>ERSS</name>
     <description>企业订阅</description>
-    <name>ERSS</name>
-    <description>企业订阅</description>
     <author email="haojie.ma@hand-china.com" href="http://www.hand-china.com">Hero.Ma</author>
     <access origin="*" />
     <preference name="fullscreen" value="true" />
